@@ -9,16 +9,32 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var storyLabel: UILabel!
     @IBOutlet weak var choice1Button: UIButton!
     @IBOutlet weak var choice2Button: UIButton!
     
+    var storyBrain = StoryBrain()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateUI(index: storyBrain.storiesIndex)
     }
-
-
+    
+    @IBAction func choiceButtonPressed(_ sender: UIButton) {
+        
+        var choice = sender.currentTitle!
+        updateUI(index: storyBrain.nextStory(userChoice: choice))
+        
+    }
+    
+    func updateUI(index: Int){
+        
+        storyLabel.text = storyBrain.getTitle()
+        choice1Button.setTitle(storyBrain.getChoice1(), for: .normal)
+        choice2Button.setTitle(storyBrain.getChoice2(), for: .normal)
+        
+    }
+    
 }
 
