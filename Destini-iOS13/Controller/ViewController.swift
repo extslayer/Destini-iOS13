@@ -23,16 +23,16 @@ class ViewController: UIViewController {
     
     @IBAction func choiceButtonPressed(_ sender: UIButton) {
         
-        var choice = sender.currentTitle!
-        updateUI(index: storyBrain.nextStory(userChoice: choice))
+        let choice = sender.currentTitle!
+        updateUI(index: storyBrain.nextStory(userChoice: choice, Index: 0))
         
     }
     
     func updateUI(index: Int){
         
-        storyLabel.text = storyBrain.getTitle()
-        choice1Button.setTitle(storyBrain.getChoice1(), for: .normal)
-        choice2Button.setTitle(storyBrain.getChoice2(), for: .normal)
+        storyLabel.text = storyBrain.getTitle(Index: index)
+        choice1Button.setTitle(storyBrain.getChoice1(Index: index), for: .normal)
+        choice2Button.setTitle(storyBrain.getChoice2(Index: index), for: .normal)
         
     }
     
